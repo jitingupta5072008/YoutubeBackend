@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>All Users</title>
+     <script src="https://cdn.tailwindcss.com"></script>
+     <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+     <div class="bg-white py-5 sm:py-5">
+          <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="mx-auto max-w-2xl lg:mx-0">
+              <a href="/" class="font-bold text-indigo-600 p-2">🔙 Go back</a>
+              <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">All User</h2>
+              <p class="mt-2 text-lg leading-8 text-gray-600">Learn how to grow your business with our expert advice.</p>
+            </div>
+            <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-12 sm:pt-10 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+              <% if(allusers.length > 0) { %>
+              <% allusers.forEach(function(user){ %>
+              <article class="border-2 p-5 rounded-lg flex max-w-xl flex-col items-start justify-between">
+               <div class="flex items-center gap-x-4 text-xs mx-auto">
+                    <img class="rounded-lg  w-full " src="<%= user.image %>" alt="loading..">
+               </div>
+                <div class="group relative">
+                  <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+                    <a href="#">
+                      <span class="absolute inset-0"></span>
+                      <%= user.name %>
+                    </a>
+                  </h3>
+                  <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600"><%= user.email %></p>
+                </div>
+               <div class="flex mt-5" style="gap: 154px;">
+                    <a href="/edit/<%= user._id %>" class="flex justify-center rounded-md  px-3 py-1.5 text-sm font-semibold leading-6 text-indigo-600 shadow-sm underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Edit User</a>
+                    <a href="/delete/<%= user._id %>" class="flex justify-center rounded-md  px-3 py-1.5 text-sm font-semibold leading-6 text-indigo-600 shadow-sm underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Delete User </a>
+               </div>
+              </article>
+              <% }) %>
+              <% } else { %>
+                <div>
+                  <h1 class="text-zinc bg-red-200 px-4 py-2 font-bold rounded-lg text-black">No users yet</h1>
+                  <a href="/">
+                    <button type="submit" class="mt-3 w-1/2 justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
+                  </a>
+                </div>
+              <% } %>
+              <!-- More posts... -->
+            </div>
+          </div>
+        </div>
+        
+</body>
+</html>
